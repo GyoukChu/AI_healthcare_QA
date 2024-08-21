@@ -30,11 +30,11 @@ batch_job = client.batches.retrieve("HERE IS YOUR BATCH JOB ID")
 result_file_id = batch_job.output_file_id
 result = client.files.content(result_file_id).text
 # print(result)
-result_file_name = "AI-healthcare-sampled-gpt4o0806.jsonl"
+result_file_name = "AI-healthcare-sampled-gpt4omini.jsonl"
 
 with open(result_file_name, 'w', encoding='utf-8') as file:
     file.write(result)
 
 import pandas as pd
 temp = pd.read_json(result_file_name, lines=True)
-temp.to_json("AI-healthcare-gpt4o0806-final.jsonl", index=False, lines=True, orient='records', force_ascii=False)
+temp.to_json("AI-healthcare-gpt4omini-final.jsonl", index=False, lines=True, orient='records', force_ascii=False)
